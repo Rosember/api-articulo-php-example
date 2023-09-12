@@ -13,4 +13,3 @@ class Categoria extends Model
         'nombre'
     ];
 }
-}

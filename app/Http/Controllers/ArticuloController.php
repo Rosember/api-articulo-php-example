@@ -97,7 +97,6 @@ class ArticuloController extends Controller
             $res = Articulo::find($id);
             return response()->json($res, 200);
         } catch (\Throwable $th) {
-
             return response()->json(
                 [
                     'error' => $th->getMessage(),
