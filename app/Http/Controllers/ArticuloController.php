@@ -16,9 +16,9 @@ class ArticuloController extends Controller
     {
         try {
             $data = Articulo::get();
-            return response()->json($data,200);
+            return response()->json($data, 200);
         } catch (\Throwable $th) {
-            return response()->json(['error'=>$th->getMessage()],500);
+            return response()->json(['error' => $th->getMessage()], 500);
         }
     }
 
@@ -42,26 +42,26 @@ class ArticuloController extends Controller
         // $articulo->save();
 
         try {
-            $data['descripcion']= $request['descripcion'];
-            $data['precio']= $request['precio'];
-            $data['stock']= $request['stock'];
+            $data['descripcion'] = $request['descripcion'];
+            $data['precio'] = $request['precio'];
+            $data['stock'] = $request['stock'];
             $res = Articulo::create($data);
-            return response()->json($res,200);
+            return response()->json($res, 200);
         } catch (\Throwable $th) {
-            return response()->json(['error'=>$th->getMessage()],500);
+            return response()->json(['error' => $th->getMessage()], 500);
         }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show( string $id)
+    public function show(string $id)
     {
         try {
             $data = Articulo::find($id);
-            return response()->json($data,200);
+            return response()->json($data, 200);
         } catch (\Throwable $th) {
-            return response()->json(['error'=>$th->getMessage()],500);
+            return response()->json(['error' => $th->getMessage()], 500);
         }
     }
 
@@ -88,23 +88,24 @@ class ArticuloController extends Controller
         // return $articulo;
 
         try {
-            $data['descripcion']= $request['descripcion'];
-            $data['precio']= $request['precio'];
-            $data['stock']= $request['stock'];
-            Log::channel('custom')->info("Datos del array: ".'--'.print_r($data, true));
-            Log::info('This is some useful information' .' --'.  $data['descripcion']);
-            Articulo::find($id).update($data);
+            $data['descripcion'] = $request['descripcion'];
+            $data['precio'] = $request['precio'];
+            $data['stock'] = $request['stock'];
+            Log::channel('custom')->info("Datos del array: " . '--' . print_r($data, true));
+            Log::info('This is some useful information' . ' --' .  $data['descripcion']);
+            Articulo::find($id)->update($data);
             $res = Articulo::find($id);
-            return response()->json($res,200);
-            
+            return response()->json($res, 200);
         } catch (\Throwable $th) {
-            
-            return response()->json([
-                'error'=>$th->getMessage(),
-                'linea'=> $th->getLine()
-                ]
-                ,500); 
-        } 
+
+            return response()->json(
+                [
+                    'error' => $th->getMessage(),
+                    'linea' => $th->getLine()
+                ],
+                500
+            );
+        }
     }
 
     /**
@@ -114,9 +115,9 @@ class ArticuloController extends Controller
     {
         try {
             $res = Articulo::find($id)->delete();
-            return response()->json(['deleted'=>$res],200);
+            return response()->json(['deleted' => $res], 200);
         } catch (\Throwable $th) {
-            return response()->json(['error'=>$th->getMessage()],500);
+            return response()->json(['error' => $th->getMessage()], 500);
         }
     }
 }
