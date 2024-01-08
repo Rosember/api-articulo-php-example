@@ -16,4 +16,9 @@ class ExampleTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function response_of_site(): void
+    {
+        $this->get('/')->assertStatus(200);
+    }
 }
